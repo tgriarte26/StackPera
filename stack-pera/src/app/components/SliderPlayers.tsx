@@ -1,5 +1,16 @@
 'use client';
 import React, { useState } from 'react';
+import { Outfit } from "next/font/google";
+
+const headingFont = Outfit({
+  subsets: ["latin"],
+  weight: ["600"],
+});
+
+const bodyFont = Outfit({
+  subsets: ["latin"],
+  weight: ["500"],
+});
 
 const MIN = 2;
 const MAX = 10;
@@ -18,17 +29,19 @@ const SliderPlayers = ({onChange} : SliderProps) => {
   }
 
   return (
-    <div className="gap-3 flex flex-col">
-      <h2 className="text-center text-white text-2xl mt-2">{value}</h2>
-      <input
-        type="range"
-        min={MIN}
-        max={MAX}
-        value={value}
-        step={1}
-        onChange={changeWidth}
-        className="player-slider cursor-pointer"
-        />
+    <div className="items-center">
+      <div>
+        <h2 className={`${bodyFont.className} inline text-xl text-white select-none float-left`}>Number of Players:</h2>
+        <h2 className={`${bodyFont.className} inline text-xl text-white select-none`}>{value}</h2>
+          <input
+            type="range"
+            min={MIN}
+            max={MAX}
+            value={value}
+            onChange={changeWidth}
+            className={`${bodyFont.className} inline mt-2.5 float-right player-slider`}
+          />
+      </div>
     </div>
   )
 }

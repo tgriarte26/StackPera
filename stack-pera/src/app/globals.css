@@ -27,6 +27,7 @@ body {
 .player-slider {
   -webkit-appearance: none;
   background: #2d2d2d;
+  width: 50%;
   height: 8px;
   border-radius: 4px;
 }

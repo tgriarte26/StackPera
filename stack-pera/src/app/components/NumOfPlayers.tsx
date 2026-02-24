@@ -1,6 +1,5 @@
 "use client";
 import { Outfit } from "next/font/google";
-import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const headingFont = Outfit({
@@ -13,19 +12,23 @@ const bodyFont = Outfit({
   weight: ["500"],
 });
 
-export default function NumOfPlayers() {
+interface Props {
+  value: number;
+  onChange: (value: number) => void;
+}
+
+export default function NumOfPlayers({value, onChange}: Props) {
   const MIN = 2;
   const MAX = 10;
-  const [count, setCount] = useState(MIN);
 
   function increment() {
-    if (count < MAX) {
-      setCount(count + 1);
+    if (value < MAX) {
+      onChange(value + 1);
     }
   }
   function decrement() {
-    if (count > MIN) {
-      setCount(count - 1);
+    if (value > MIN) {
+      onChange(value - 1);
     }
   }
   return (
@@ -38,7 +41,7 @@ export default function NumOfPlayers() {
       <h2
         className={`${bodyFont.className} inline text-2xl text-white select-none float-left`}
       >
-        {count}
+        {value}
       </h2>
       <div className="flex items-center gap-2">
         <button

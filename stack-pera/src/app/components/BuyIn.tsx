@@ -1,6 +1,5 @@
 "use client";
 import { Outfit } from "next/font/google";
-import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const headingFont = Outfit({
@@ -13,19 +12,23 @@ const bodyFont = Outfit({
   weight: ["500"],
 });
 
-export default function BuyIn() {
+interface Props {
+  price: number,
+  onChange: (price: number) => void
+}
+
+export default function BuyIn({ price, onChange }: Props) {
   const MIN = 5;
   const MAX = 20;
-  const [count, setCount] = useState(MIN);
 
   function increment() {
-    if (count < MAX) {
-      setCount(count + 5);
+    if (price < MAX) {
+      onChange(price + 5);
     }
   }
   function decrement() {
-    if (count > MIN) {
-      setCount(count - 5);
+    if (price > MIN) {
+      onChange(price - 5);
     }
   }
   return (
@@ -38,7 +41,7 @@ export default function BuyIn() {
       <h2
         className={`${bodyFont.className} inline text-2xl text-white select-none float-left`}
       >
-        ${count}
+        ${price}
       </h2>
       <div className="flex items-center gap-2">
         <button
@@ -54,7 +57,6 @@ export default function BuyIn() {
           <Minus className="text-white" />
         </button>
       </div>
-      
     </div>
   );
 }

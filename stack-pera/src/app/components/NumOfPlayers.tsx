@@ -1,6 +1,7 @@
 "use client";
 import { Outfit } from "next/font/google";
 import { Plus, Minus } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const headingFont = Outfit({
   subsets: ["latin"],
@@ -17,7 +18,8 @@ interface Props {
   onChange: (value: number) => void;
 }
 
-export default function NumOfPlayers({value, onChange}: Props) {
+export default function NumOfPlayers({ value, onChange }: Props) {
+
   const MIN = 2;
   const MAX = 10;
 
@@ -32,32 +34,33 @@ export default function NumOfPlayers({value, onChange}: Props) {
     }
   }
   return (
-    <div className="flex items-center justify-between gap-2">
-      <h2
-        className={`${bodyFont.className} inline text-xl text-white select-none float-left`}
-      >
-        # of Players:
-      </h2>
-      <h2
-        className={`${bodyFont.className} inline text-2xl text-white select-none float-left`}
-      >
-        {value}
-      </h2>
-      <div className="flex items-center gap-2">
-        <button
-          onClick={increment}
-          className="bg-[#00A86B] border-3 border-white px-1 py-1 rounded-xl hover:opacity-90"
+    <div className="flex flex-col gap-3">
+      <div className="flex items-center justify-between gap-2">
+        <h2
+          className={`${bodyFont.className} inline text-xl text-white select-none float-left`}
         >
-          <Plus className="text-white" />
-        </button>
-        <button
-          onClick={decrement}
-          className="bg-[#c1121f] border-3 border-white px-1 py-1 rounded-xl hover:opacity-90"
+          # of Players:
+        </h2>
+        <h2
+          className={`${bodyFont.className} inline text-2xl text-white select-none float-left`}
         >
-          <Minus className="text-white" />
-        </button>
+          {value}
+        </h2>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={increment}
+            className="bg-[#00A86B] border-3 border-white px-1 py-1 rounded-xl hover:opacity-90"
+          >
+            <Plus className="text-white" />
+          </button>
+          <button
+            onClick={decrement}
+            className="bg-[#c1121f] border-3 border-white px-1 py-1 rounded-xl hover:opacity-90"
+          >
+            <Minus className="text-white" />
+          </button>
+        </div>
       </div>
-      
     </div>
   );
 }

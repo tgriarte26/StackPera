@@ -25,7 +25,7 @@ export default function StartButton({players, buyIn}: Props) {
     router.push(`/session?players=${players}&buyin=${buyIn}`);
   }
   return (
-    <div className="mt-3">
+    <div className="mt-1.5">
       <button onClick={handleStart} className={`${bodyFont.className} bg-green-400 px-6 py-2 rounded-xl text-white border-3 hover:bg-green-500 select-none`} >
         Start Session
       </button>
